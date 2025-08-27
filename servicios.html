@@ -44,12 +44,46 @@
       align-items: center;
     }
 
+    nav {
+      background-color: #75c7b8cc;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 12px;
+      margin: 0 auto 30px;
+      max-width: 640px;
+      box-shadow: 0 4px 12px rgba(117, 199, 184, 0.3);
+      font-weight: 600;
+      font-size: 1.1em;
+      color: #2c3e50;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation-name: fadeSlideUp;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      animation-delay: 0;
+    }
+
+    nav a {
+      color: #2c3e50;
+      text-decoration: none;
+      margin: 0 20px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #3f8d7f;
+      text-decoration: underline;
+    }
+
     header {
       text-align: center;
       color: #2c3e50;
       margin-bottom: 40px;
       max-width: 720px;
       animation: fadeSlideUp 0.8s ease forwards;
+      animation-delay: 0.15s;
       opacity: 0;
       transform: translateY(20px);
     }
@@ -78,7 +112,7 @@
       backdrop-filter: blur(8px);
       color: #344055;
       animation: fadeSlideUp 0.8s ease forwards;
-      animation-delay: 0.15s;
+      animation-delay: 0.3s;
       opacity: 0;
       transform: translateY(20px);
     }
@@ -125,7 +159,7 @@
       font-weight: 600;
       font-size: 1em;
       animation: fadeSlideUp 0.8s ease forwards;
-      animation-delay: 0.3s;
+      animation-delay: 0.45s;
       opacity: 0;
       transform: translateY(20px);
     }
@@ -158,6 +192,12 @@
     <p>Soluciones digitales diseñadas para impulsar tu negocio</p>
   </header>
 
+    <nav>
+    <a href="index.html">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
   <main>
     <div class="features">
       <div class="feature">
@@ -189,3 +229,4 @@
 
 </body>
 </html>
+
