@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ConstruSoft - Desarrollo de Software</title>
   <style>
+    /* Reset y básicos */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,10 +14,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-      /* Fondo base con relieve */
       background:
-        /* patrón de rombos */
         repeating-linear-gradient(
           45deg,
           rgba(255, 255, 255, 0.1) 0,
@@ -31,14 +29,10 @@
           transparent 10px,
           transparent 20px
         ),
-        /* degradado base */
         linear-gradient(145deg, #dbe9f4, #c5d4e7);
-
       color: #344055;
       line-height: 1.6;
       min-height: 100vh;
-
-      /* Efecto relieve muy sutil */
       box-shadow:
         8px 8px 20px #a0b8d0,
         -8px -8px 20px #ffffff,
@@ -66,7 +60,7 @@
     }
 
     nav {
-      background-color: #75c7b8cc; /* turquesa pastel con transparencia */
+      background-color: #75c7b8cc;
       text-align: center;
       padding: 12px 0;
       border-radius: 12px;
@@ -94,7 +88,7 @@
       max-width: 960px;
       margin: 0 auto 40px;
       padding: 30px 25px;
-      background: #ffffffdd; /* blanco con transparencia */
+      background: #ffffffdd;
       border-radius: 20px;
       box-shadow:
         0 8px 24px rgba(50, 50, 93, 0.1),
@@ -157,9 +151,44 @@
       font-size: 1em;
     }
 
-        #servicios h2,
+    /* Centramos títulos de servicios y contacto */
+    #servicios h2,
     #contacto h2 {
       text-align: center;
+    }
+
+    /* Animación de fade + slide up */
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Aplicamos animación a los h2 */
+    section h2 {
+      animation-name: fadeSlideUp;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0; /* Inicialmente oculto para animar */
+    }
+
+    /* Retrasos para que no aparezcan todos a la vez */
+    #servicios h2 {
+      animation-delay: 0.1s;
+    }
+
+    #nosotros h2 {
+      animation-delay: 0.3s;
+    }
+
+    #contacto h2 {
+      animation-delay: 0.5s;
     }
 
     /* Responsive */
