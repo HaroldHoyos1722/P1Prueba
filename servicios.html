@@ -1,232 +1,360 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Servicios - ConstruSoft</title>
-  <style>
-    /* Reset y básicos */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Servicios - ConstruSoft</title>
+    <style>
+        /* Reset y básicos */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background:
-        repeating-linear-gradient(
-          45deg,
-          rgba(255, 255, 255, 0.1) 0,
-          rgba(255, 255, 255, 0.1) 10px,
-          transparent 10px,
-          transparent 20px
-        ),
-        repeating-linear-gradient(
-          -45deg,
-          rgba(255, 255, 255, 0.1) 0,
-          rgba(255, 255, 255, 0.1) 10px,
-          transparent 10px,
-          transparent 20px
-        ),
-        linear-gradient(145deg, #dbe9f4, #c5d4e7);
-      color: #344055;
-      line-height: 1.6;
-      min-height: 100vh;
-      box-shadow:
-        8px 8px 20px #a0b8d0,
-        -8px -8px 20px #ffffff,
-        inset 3px 3px 8px #a0b8d0,
-        inset -3px -3px 8px #ffffff;
-      padding: 40px 20px 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.1) 0,
+                    rgba(255, 255, 255, 0.1) 10px,
+                    transparent 10px,
+                    transparent 20px),
+                repeating-linear-gradient(-45deg,
+                    rgba(255, 255, 255, 0.1) 0,
+                    rgba(255, 255, 255, 0.1) 10px,
+                    transparent 10px,
+                    transparent 20px),
+                linear-gradient(145deg, #dbe9f4, #c5d4e7);
+            color: #344055;
+            line-height: 1.6;
+            min-height: 100vh;
+            box-shadow:
+                8px 8px 20px #a0b8d0,
+                -8px -8px 20px #ffffff,
+                inset 3px 3px 8px #a0b8d0,
+                inset -3px -3px 8px #ffffff;
+            padding: 40px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    nav {
-      background-color: #75c7b8cc;
-      text-align: center;
-      padding: 12px 0;
-      border-radius: 12px;
-      margin: 0 auto 30px;
-      max-width: 640px;
-      box-shadow: 0 4px 12px rgba(117, 199, 184, 0.3);
-      font-weight: 600;
-      font-size: 1.1em;
-      color: #2c3e50;
+        nav {
+            background-color: #75c7b8cc;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 12px;
+            margin: 20px auto 0;
+            max-width: 640px;
+            box-shadow: 0 4px 12px rgba(117, 199, 184, 0.3);
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation-name: fadeSlideUp;
+            animation-duration: 0.8s;
+            animation-fill-mode: forwards;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-delay: 0.15s;
+        }
 
-      opacity: 0;
-      transform: translateY(20px);
-      animation-name: fadeSlideUp;
-      animation-duration: 0.8s;
-      animation-fill-mode: forwards;
-      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-      animation-delay: 0;
-    }
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
 
-    nav a {
-      color: #2c3e50;
-      text-decoration: none;
-      margin: 0 20px;
-      transition: color 0.3s;
-    }
+        nav a:hover {
+            color: #3f8d7f;
+            text-decoration: underline;
+        }
 
-    nav a:hover {
-      color: #3f8d7f;
-      text-decoration: underline;
-    }
+        header {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            max-width: 720px;
+            animation: fadeSlideUp 0.8s ease forwards;
+            animation-delay: 0s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
 
-    header {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 40px;
-      max-width: 720px;
-      animation: fadeSlideUp 0.8s ease forwards;
-      animation-delay: 0.15s;
-      opacity: 0;
-      transform: translateY(20px);
-    }
+        header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
 
-    header h1 {
-      font-size: 3em;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
+        header p {
+            font-size: 1.3em;
+            font-weight: 500;
+            color: #627d98;
+        }
 
-    header p {
-      font-size: 1.3em;
-      font-weight: 500;
-      color: #627d98;
-    }
+        main {
+            max-width: 960px;
+            width: 100%;
+            background: #ffffffdd;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow:
+                0 8px 24px rgba(50, 50, 93, 0.1),
+                0 4px 16px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(8px);
+            color: #344055;
+            animation: fadeSlideUp 0.8s ease forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
 
-    main {
-      max-width: 960px;
-      width: 100%;
-      background: #ffffffdd;
-      border-radius: 20px;
-      padding: 30px 25px;
-      box-shadow:
-        0 8px 24px rgba(50, 50, 93, 0.1),
-        0 4px 16px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(8px);
-      color: #344055;
-      animation: fadeSlideUp 0.8s ease forwards;
-      animation-delay: 0.3s;
-      opacity: 0;
-      transform: translateY(20px);
-    }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 20px;
-      margin-top: 20px;
-    }
+        .feature {
+            background: #f6f8fc;
+            color: #344055;
+            padding: 22px 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            flex: 1 1 280px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: default;
+        }
 
-    .feature {
-      background: #f6f8fc;
-      color: #344055;
-      padding: 22px 25px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      flex: 1 1 280px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      cursor: default;
-    }
+        .feature:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
 
-    .feature:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
-    }
+        .feature h3 {
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
 
-    .feature h3 {
-      margin-bottom: 12px;
-      color: #2c3e50;
-    }
+        footer {
+            text-align: center;
+            background-color: #75c7b8cc;
+            color: #2c3e50;
+            padding: 20px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 960px;
+            margin-top: 40px;
+            box-shadow: 0 6px 16px rgba(117, 199, 184, 0.25);
+            font-weight: 600;
+            font-size: 1em;
+            animation: fadeSlideUp 0.8s ease forwards;
+            animation-delay: 0.45s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
 
-    footer {
-      text-align: center;
-      background-color: #75c7b8cc;
-      color: #2c3e50;
-      padding: 20px;
-      border-radius: 16px;
-      width: 100%;
-      max-width: 960px;
-      margin-top: 40px;
-      box-shadow: 0 6px 16px rgba(117, 199, 184, 0.25);
-      font-weight: 600;
-      font-size: 1em;
-      animation: fadeSlideUp 0.8s ease forwards;
-      animation-delay: 0.45s;
-      opacity: 0;
-      transform: translateY(20px);
-    }
+        /* Animación keyframes */
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-    /* Animación keyframes */
-    @keyframes fadeSlideUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    /* Responsive */
-    @media(max-width: 720px) {
-      .features {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+        /* Reloj analógico */
+        #reloj {
+            margin-bottom: 20px;
+            margin: 0 auto 25px;
+            width: 200px;
+            height: 200px;
+            background: #f6f8fc;
+            border-radius: 50%;
+            box-shadow:
+                8px 8px 15px #a0b8d0,
+                -8px -8px 15px #ffffff,
+                inset 4px 4px 6px #a0b8d0,
+                inset -4px -4px 6px #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            opacity: 0;
+            transform: translateY(20px);
+            animation-name: fadeSlideUp;
+            animation-duration: 0.8s;
+            animation-fill-mode: forwards;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            animation-delay: 0.1s;
+            position: relative;
+        }
+
+        .clock {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: #dbe9f4;
+            box-shadow:
+                inset 4px 4px 8px #ffffff,
+                inset -4px -4px 8px #a0b8d0;
+        }
+
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            transform: rotate(90deg);
+            background: #344055;
+            border-radius: 4px;
+            transition: all 0.05s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hand.hour {
+            width: 8px;
+            height: 50px;
+            margin-left: -4px;
+            background: #2c3e50;
+            border-radius: 5px;
+        }
+
+        .hand.minute {
+            width: 6px;
+            height: 70px;
+            margin-left: -3px;
+            background: #3f8d7f;
+        }
+
+        .hand.second {
+            width: 2px;
+            height: 80px;
+            margin-left: -1px;
+            background: #e74c3c;
+        }
+
+        .center-circle {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #2c3e50;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            margin-top: -8px;
+            margin-left: -8px;
+            box-shadow: 0 0 5px #344055aa;
+        }
+
+        /* Responsive */
+        @media(max-width: 720px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Servicios</h1>
-    <p>Soluciones digitales diseñadas para impulsar tu negocio</p>
-  </header>
+    <header>
+        <h1>Servicios</h1>
+        <p>Soluciones digitales diseñadas para impulsar tu negocio</p>
+    </header>
+
+    <!-- Reloj analógico -->
+    <div id="reloj">
+        <div class="clock">
+            <div class="hand hour" id="hour-hand"></div>
+            <div class="hand minute" id="minute-hand"></div>
+            <div class="hand second" id="second-hand"></div>
+            <div class="center-circle"></div>
+            <div class="marker" style="transform: rotate(0deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(30deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(60deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(90deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(120deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(150deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(180deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(210deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(240deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(270deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(300deg) translate(90px)"></div>
+            <div class="marker" style="transform: rotate(330deg) translate(90px)"></div>
+        </div>
+    </div>
+
+
 
     <nav>
-    <a href="index.html">Inicio</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+        <a href="index.html">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
 
-  <main>
-    <div class="features">
-      <div class="feature">
-        <h3>Desarrollo Web</h3>
-        <p>Aplicaciones modernas, seguras y adaptables a cualquier dispositivo.</p>
-      </div>
-      <div class="feature">
-        <h3>Aplicaciones Móviles</h3>
-        <p>Soluciones móviles para iOS y Android que conectan con tus usuarios.</p>
-      </div>
-      <div class="feature">
-        <h3>Integraciones API</h3>
-        <p>Conectamos tus sistemas con servicios externos para potenciar tu productividad.</p>
-      </div>
-      <div class="feature">
-        <h3>Consultoría Tecnológica</h3>
-        <p>Asesoría especializada para elegir las mejores tecnologías y estrategias.</p>
-      </div>
-      <div class="feature">
-        <h3>Mantenimiento y Soporte</h3>
-        <p>Garantizamos el funcionamiento óptimo y actualización continua de tus sistemas.</p>
-      </div>
-    </div>
-  </main>
+    <main>
+        <div class="features">
+            <div class="feature">
+                <h3>Desarrollo Web</h3>
+                <p>Aplicaciones modernas, seguras y adaptables a cualquier dispositivo.</p>
+            </div>
+            <div class="feature">
+                <h3>Aplicaciones Móviles</h3>
+                <p>Soluciones móviles para iOS y Android que conectan con tus usuarios.</p>
+            </div>
+            <div class="feature">
+                <h3>Integraciones API</h3>
+                <p>Conectamos tus sistemas con servicios externos para potenciar tu productividad.</p>
+            </div>
+            <div class="feature">
+                <h3>Consultoría Tecnológica</h3>
+                <p>Asesoría especializada para elegir las mejores tecnologías y estrategias.</p>
+            </div>
+            <div class="feature">
+                <h3>Mantenimiento y Soporte</h3>
+                <p>Garantizamos el funcionamiento óptimo y actualización continua de tus sistemas.</p>
+            </div>
+        </div>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 ConstruSoft. Todos los derechos reservados.</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 ConstruSoft. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            const second = now.getSeconds();
+            const minute = now.getMinutes();
+            const hour = now.getHours();
+
+            const secondDeg = ((second / 60) * 360) + 90;
+            const minuteDeg = ((minute / 60) * 360) + ((second / 60) * 6) + 90;
+            const hourDeg = ((hour % 12) / 12) * 360 + ((minute / 60) * 30) + 90;
+
+            document.getElementById('second-hand').style.transform = `rotate(${secondDeg}deg)`;
+            document.getElementById('minute-hand').style.transform = `rotate(${minuteDeg}deg)`;
+            document.getElementById('hour-hand').style.transform = `rotate(${hourDeg}deg)`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 
 </body>
-</html>
 
+</html>
