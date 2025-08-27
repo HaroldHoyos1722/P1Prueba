@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ConstruSoft - Desarrollo de Software</title>
   <style>
     /* Reset y básicos */
@@ -15,20 +16,16 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background:
-        repeating-linear-gradient(
-          45deg,
+        repeating-linear-gradient(45deg,
           rgba(255, 255, 255, 0.1) 0,
           rgba(255, 255, 255, 0.1) 10px,
           transparent 10px,
-          transparent 20px
-        ),
-        repeating-linear-gradient(
-          -45deg,
+          transparent 20px),
+        repeating-linear-gradient(-45deg,
           rgba(255, 255, 255, 0.1) 0,
           rgba(255, 255, 255, 0.1) 10px,
           transparent 10px,
-          transparent 20px
-        ),
+          transparent 20px),
         linear-gradient(145deg, #dbe9f4, #c5d4e7);
       color: #344055;
       line-height: 1.6;
@@ -43,7 +40,7 @@
 
     header {
       text-align: center;
-      padding: 60px 20px;
+      padding: 60px 20px 10px;
       color: #2c3e50;
     }
 
@@ -57,6 +54,48 @@
       font-size: 1.3em;
       font-weight: 500;
       color: #627d98;
+    }
+
+    /* Animación para header text */
+    #header-text h1,
+    #header-text p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation-name: fadeSlideUp;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #header-text h1 {
+      animation-delay: 0s;
+    }
+
+    #header-text p {
+      animation-delay: 0.15s;
+    }
+
+    /* Reloj digital */
+    #reloj {
+      max-width: 320px;
+      margin: 20px auto 40px;
+      padding: 14px 24px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 18px;
+      box-shadow:
+        4px 4px 15px rgba(117, 199, 184, 0.4),
+        inset 2px 2px 6px rgba(255, 255, 255, 0.9);
+      color: #2c3e50;
+      font-weight: 600;
+      font-size: 1.4em;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      user-select: none;
+      letter-spacing: 1.5px;
+      animation: fadeSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      animation-delay: 0.15s;
     }
 
     nav {
@@ -121,12 +160,14 @@
 
     #nosotros {
       animation-delay: 0.6s;
-      text-align: center; /* Mantener texto centrado aquí */
+      text-align: center;
+      /* Mantener texto centrado aquí */
     }
 
     #contacto {
       animation-delay: 0.9s;
-      text-align: center; /* Mejor centrar contacto también */
+      text-align: center;
+      /* Mejor centrar contacto también */
     }
 
     footer {
@@ -157,6 +198,7 @@
         opacity: 0;
         transform: translateY(20px);
       }
+
       100% {
         opacity: 1;
         transform: translateY(0);
@@ -175,7 +217,7 @@
       color: #344055;
       padding: 22px 25px;
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
       flex: 1 1 280px;
       margin: 12px;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -184,7 +226,7 @@
 
     .feature:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
     }
 
     .feature h3 {
@@ -205,12 +247,20 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
-    <h1>ConstruSoft</h1>
-    <p>Soluciones de software a medida para tu negocio</p>
+    <div id="header-text">
+      <h1>ConstruSoft</h1>
+      <p>Soluciones de software a medida para tu negocio</p>
+    </div>
   </header>
+
+  <div id="reloj">
+    --:--:--<br />
+    Cargando fecha...
+  </div>
 
   <nav>
     <a href="#servicios">Servicios</a>
@@ -238,7 +288,8 @@
 
   <section id="nosotros">
     <h2>Sobre nosotros</h2>
-    <p>Somos un equipo apasionado por la tecnología y el desarrollo de soluciones digitales. Nuestra misión es ayudarte a transformar tus ideas en productos de alto impacto.</p>
+    <p>Somos un equipo apasionado por la tecnología y el desarrollo de soluciones digitales. Nuestra misión es ayudarte
+      a transformar tus ideas en productos de alto impacto.</p>
   </section>
 
   <section id="contacto">
@@ -252,6 +303,41 @@
     <p>&copy; 2025 ConstruSoft. Todos los derechos reservados.</p>
   </footer>
 
-</body>
-</html>
+  <script>
+    function actualizarReloj() {
+      const reloj = document.getElementById('reloj');
+      const ahora = new Date();
 
+      // Opciones para la fecha en español
+      const opcionesFecha = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      };
+
+      // Formato hora (24h) con dos dígitos
+      const horas = String(ahora.getHours()).padStart(2, '0');
+      const minutos = String(ahora.getMinutes()).padStart(2, '0');
+      const segundos = String(ahora.getSeconds()).padStart(2, '0');
+
+      // Fecha en español
+      const fechaStr = ahora.toLocaleDateString('es-ES', opcionesFecha);
+
+      // Capitalizar primera letra de día de la semana
+      const fechaCapitalizada = fechaStr.charAt(0).toUpperCase() + fechaStr.slice(1);
+
+      reloj.innerHTML = `
+        ${horas}:${minutos}:${segundos}<br>
+        ${fechaCapitalizada}
+      `;
+    }
+
+    // Actualizar reloj cada segundo
+    actualizarReloj();
+    setInterval(actualizarReloj, 1000);
+  </script>
+
+</body>
+
+</html>
