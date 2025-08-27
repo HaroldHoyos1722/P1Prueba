@@ -13,11 +13,31 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Fondo con relieve suave y color pastel */
-      background: linear-gradient(145deg, #dbe9f4, #c5d4e7);
+
+      /* Fondo base con relieve */
+      background:
+        /* patrón de rombos */
+        repeating-linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.1) 0,
+          rgba(255, 255, 255, 0.1) 10px,
+          transparent 10px,
+          transparent 20px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.1) 0,
+          rgba(255, 255, 255, 0.1) 10px,
+          transparent 10px,
+          transparent 20px
+        ),
+        /* degradado base */
+        linear-gradient(145deg, #dbe9f4, #c5d4e7);
+
       color: #344055;
       line-height: 1.6;
       min-height: 100vh;
+
       /* Efecto relieve muy sutil */
       box-shadow:
         8px 8px 20px #a0b8d0,
